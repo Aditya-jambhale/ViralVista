@@ -4,7 +4,7 @@ from flask_cors import CORS
 import requests
 
 app = Flask(__name__)
-CORS(app, origins=["http://localhost:3000"], methods=["GET", "POST"])
+CORS(app, origins=["https://superlevel-mind-hack.vercel.app"], methods=["GET", "POST"])
 
 # Langflow settings
 BASE_API_URL = "https://api.langflow.astra.datastax.com"
