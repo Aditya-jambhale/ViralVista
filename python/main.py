@@ -51,6 +51,9 @@ def run_flow(message: str, endpoint: str, output_type: str = "chat", input_type:
     response = requests.post(api_url, json=payload, headers=headers)
     return response.json()
 
+@app.route('/')
+def home():
+    return jsonify({"message": "Welcome to the backend API"}), 200
 
 @app.route('/query-langflow', methods=['POST'])
 def query_langflow():
