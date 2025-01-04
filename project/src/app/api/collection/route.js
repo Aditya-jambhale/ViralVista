@@ -17,6 +17,6 @@ export async function GET(request) {
         return new Response(JSON.stringify({ data: documents }), { status: 200 });
     } catch (error) {
         console.error("Error fetching documents:", error);
-        return new Response(JSON.stringify({ error: error.message }), { status: 500 });
-    }
+        return new Response(JSON.stringify({ error: error.message }), { status: 500 });
+    }
 }
