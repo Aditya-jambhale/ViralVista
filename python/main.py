@@ -1,11 +1,10 @@
 from flask import Flask, request, jsonify
+import json
+from flask_cors import CORS 
 import requests
-from flask_cors import CORS
 
 app = Flask(__name__)
-
-# Allow CORS from your deployed Next.js frontend URL
-CORS(app, origins=["https://superlevel-mind-hack.vercel.app"], methods=["GET", "POST"])
+CORS(app, origins=["http://localhost:3000"], methods=["GET", "POST"])
 
 # Langflow settings
 BASE_API_URL = "https://api.langflow.astra.datastax.com"
@@ -20,9 +19,8 @@ TWEAKS = {
     "ChatOutput-s0CNd": {},
     "Prompt-LAINo": {},
     "ParseData-GUCC8": {},
-    "AstraDBToolComponent-nKeWt": {},
+    "AstraDBToolComponent-nKeWt": {}
 }
-
 
 def run_flow(message: str, endpoint: str, output_type: str = "chat", input_type: str = "chat", tweaks: dict = None, application_token: str = APPLICATION_TOKEN) -> dict:
     """
@@ -42,31 +40,24 @@ def run_flow(message: str, endpoint: str, output_type: str = "chat", input_type:
     }
     if tweaks:
         payload["tweaks"] = tweaks
-
+    
     headers = {
         "Authorization": f"Bearer {application_token}",
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
     }
-
+    
     response = requests.post(api_url, json=payload, headers=headers)
     return response.json()
 
-@app.route('/')
-def home():
-    return jsonify({"message": "Welcome to the backend API"}), 200
-
 @app.route('/query-langflow', methods=['POST'])
 def query_langflow():
-    """
-    Endpoint to receive requests from the frontend and query the Langflow API.
-    """
     data = request.get_json()  # Get the JSON data from the frontend
     user_input = data.get('input')  # Extract the input query
 
     if not user_input:
         return jsonify({"error": "No input provided"}), 400
-
-    print(f"Received input: {user_input}")
+    
+    print(user_input)
 
     # Optionally, add model_name tweak or modify TWEAKS as needed
     tweaks = {
@@ -75,17 +66,13 @@ def query_langflow():
 
     # Run the Langflow API with the user's input and the specified tweaks
     try:
-        response = run_flow(
-            user_input, endpoint=FLOW_ID, tweaks=tweaks, application_token=APPLICATION_TOKEN
-        )
-        print("Response from Langflow successful")
+        response = run_flow(user_input, endpoint=FLOW_ID, tweaks=tweaks, application_token=APPLICATION_TOKEN)
+        print("response successful")
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
     # Return the response from Langflow back to the frontend
     return jsonify(response)
 
-
 if __name__ == "__main__":
-    # Bind the app to 0.0.0.0 and port 5000 for deployment platforms like Vercel
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(debug=True)

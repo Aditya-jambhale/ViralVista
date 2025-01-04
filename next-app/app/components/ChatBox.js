@@ -48,7 +48,7 @@ export default function LangFlowChat() {
     setResponse("");
 
     try {
-      const response = await fetch("https://superlevel-mind-hack-backend.vercel.app/query-langflow", {
+      const response = await fetch("http://127.0.0.1:5000/query-langflow", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
