@@ -17,8 +17,8 @@ export default function Dashboard() {
       <div className="md:max-w-7xl mx-auto space-y-6">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center  " >
-            <img src="/devflow_logo.jpg" alt="Devflow logo" className='h-12 w-12 mr-4' style={{borderRadius: "50%"}} />
-            <h1 className="text-3xl text-black font-bold">Devflow - Analytics Dashboard</h1>
+            <img src="/devflow_logo3.png" alt="Devflow logo" className='h-16 w-16 mr-4' style={{borderRadius: "50%"}} />
+            <h1 className="md:text-3xl text-2xl text-black font-bold">Devflow - Analytics Dashboard</h1>
           </div>
           <div className="w-full md:w-64 text-black mt-4 md:mt-0">
             <MetricsSelector 

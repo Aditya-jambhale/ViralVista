@@ -24,7 +24,7 @@ export default function LangFlowChat() {
         line = line.trim();
         if (!line) return null;
 
-        let formattedLine = line.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+        const formattedLine = line.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
 
         if (formattedLine.startsWith("###")) {
           return { type: "h3", content: formattedLine.replace(/^###\s*/, "").trim() };
@@ -44,6 +44,7 @@ export default function LangFlowChat() {
   };
 
   const handleSend = async (e) => {
+
     e.preventDefault();
     setLoading(true);
     setResponse("");
@@ -106,7 +107,7 @@ export default function LangFlowChat() {
           </button>
         ))}
       </div>
-      <form onSubmit={handleSend} className="w-full flex items-center bg-white border text-black rounded-md focus:outline-none focus:ring focus:ring-blue-300 justify-between" >
+      <form onSubmit={handleSend} className="w-full flex items-center bg-white border text-black rounded-md focus:outline-none justify-between outline-none" >
         <input
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
@@ -122,9 +123,9 @@ export default function LangFlowChat() {
             ? parseResponse(displayedText).map((item, index) => {
                 switch (item?.type) {
                   case "h3":
-                    return <h3 key={index} dangerouslySetInnerHTML={{ __html: item.content }}></h3>;
+                    return <h3 style={{fontWeight: 700}} key={index} dangerouslySetInnerHTML={{ __html: item.content }}></h3>;
                   case "ol":
-                    return <p key={index} dangerouslySetInnerHTML={{ __html: `${index + 1}. ${item.content}` }}></p>;
+                    return <p key={index} dangerouslySetInnerHTML={{ __html: `${item.content}` }}></p>;
                   case "li":
                     return <li key={index} dangerouslySetInnerHTML={{ __html: item.content }}></li>;
                   case "p":
@@ -135,9 +136,9 @@ export default function LangFlowChat() {
             : parseResponse(response).map((item, index) => {
                 switch (item?.type) {
                   case "h3":
-                    return <h3 key={index} dangerouslySetInnerHTML={{ __html: item.content }}></h3>;
+                    return <h3 style={{fontWeight: 700}} key={index} dangerouslySetInnerHTML={{ __html: item.content }}></h3>;
                   case "ol":
-                    return <p key={index} dangerouslySetInnerHTML={{ __html: `${index + 1}. ${item.content}` }}></p>;
+                    return <p key={index} dangerouslySetInnerHTML={{ __html: `${item.content}` }}></p>;
                   case "li":
                     return <li key={index} dangerouslySetInnerHTML={{ __html: item.content }}></li>;
                   case "p":
@@ -146,6 +147,7 @@ export default function LangFlowChat() {
                 }
               })}
         </div>
+
         {loading && (
           <div className="h-10 w-full flex">
             <div className="w-full h-full">
@@ -154,12 +156,13 @@ export default function LangFlowChat() {
                 style={{ animation: "shimmer 2s infinite" }}
               ></div>
               <div
-                className="h-1/2 bg-gray-300 rounded-xl mb-2 shimmers"
+                className="h-1/2 bg-gray-300 rounded-xl shimmers"
                 style={{ animation: "shimmer2 2s infinite", animationDelay: "0.2s" }}
               ></div>
             </div>
           </div>
         )}
+
       </div>
 
       <style jsx>{`
@@ -206,6 +209,7 @@ export default function LangFlowChat() {
         `}
         
       </style>
+
     </div>
   );
 }
