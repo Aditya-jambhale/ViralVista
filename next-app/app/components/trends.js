@@ -9,7 +9,7 @@ export function BestTimeSection() {
         .map((entry) => ({ day: entry.date.split("(")[1]?.replace(")", ""), time: entry.time }));
 
     return (
-        <Card className="p-6 border border-gray-300 text-black rounded-lg shadow-sm">
+        <Card className="p-6 border border-gray-300 text-black rounded-lg shadow-sm bg-white">
             <div className="flex items-center gap-2 mb-4">
                 <Clock className="h-5 w-5" />
                 <Title>Best Time for Uploading</Title>
@@ -32,7 +32,7 @@ export function TrendingSection() {
         .slice(0, 3); // Take the top 3 entries
 
     return (
-        <Card className="p-6 border border-gray-300 text-black rounded-lg shadow-sm">
+        <Card className="p-6 border border-gray-300 text-black rounded-lg shadow-sm bg-white">
             <div className="flex items-center gap-2 mb-4">
                 <TrendingUp className="h-5 w-5" />
                 <Title>Trending Content</Title>
@@ -58,7 +58,7 @@ export function HashtagSection() {
         .slice(0, 10); // Take top 10 hashtags
 
     return (
-        <Card className="p-6 border border-gray-300 text-black rounded-lg shadow-sm">
+        <Card className="p-6 border border-gray-300 text-black rounded-lg shadow-sm bg-white">
             <div className="flex items-center gap-2 mb-4">
                 <Hash className="h-5 w-5" />
                 <Title>Trending Hashtags</Title>
