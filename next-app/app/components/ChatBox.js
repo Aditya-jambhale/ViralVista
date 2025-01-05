@@ -23,7 +23,7 @@ export default function LangFlowChat() {
         line = line.trim();
         if (!line) return null;
 
-        let formattedLine = line.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+        const formattedLine = line.replace(/\\(.?)\\*/g, "<strong>$1</strong>");
 
         if (formattedLine.startsWith("###")) {
           return { type: "h3", content: formattedLine.replace(/^###\s*/, "").trim() };
@@ -57,7 +57,7 @@ export default function LangFlowChat() {
       });
 
       const aiResponse = await response.json();
-      const filteredResponse = aiResponse.outputs[0].outputs[0].artifacts.message.replaceAll("CarouseledIn", "LinkedIn");
+      const filteredResponse = aiResponse?.outputs[0].outputs[0].artifacts.message.replaceAll("CarouseledIn", "LinkedIn");
 
       setDisplayedText("");
       setResponse(filteredResponse);
@@ -68,6 +68,7 @@ export default function LangFlowChat() {
       console.error(error);
       setResponse("Error fetching response from Langflow.");
       setLoading(false);
+      setIsTyping(false);
     }
   };
 
@@ -91,13 +92,13 @@ export default function LangFlowChat() {
   }, [isTyping, response]);
 
   return (
-    <div className="p-6">
+    <div>
       <h2 className="mb-4 text-xl text-black font-semibold">LangFlow Chat</h2>
-      <div className="flex mt-3 gap-4 overflow-x-auto mb-5 scrollbar-gray">
+      <div className="flex mt-3 gap-4 overflow-x-auto mb-5 scrollbar-hidden">
         {buttonLabels.map((label, index) => (
           <button
             key={index}
-            className="text-sm bg-gray-50 border border-gray-600 text-black px-4 py-2 rounded-3xl hover:bg-gray-200 hover:border-primary"
+            className="text-sm bg-gray-50 border border-gray-600 text-black px-4 py-2 rounded-3xl hover:bg-gray-200 hover:border-primary whitespace-nowrap"
             onClick={() => setInputValue(label)}
           >
             {label}
@@ -115,49 +116,42 @@ export default function LangFlowChat() {
       <div className="mt-4 p-4 border rounded-md bg-gray-50 text-black text-lg" style={{ lineHeight: 2 }}>
         <h3 className="text-xl font-semibold mb-5">API Response:</h3>
         <div>
-          {isTyping
-            ? parseResponse(displayedText).map((item, index) => {
-                switch (item?.type) {
-                  case "h3":
-                    return <h3 key={index} dangerouslySetInnerHTML={{ __html: item.content }}></h3>;
-                  case "ol":
-                    return <p key={index} dangerouslySetInnerHTML={{ __html: `${index + 1}. ${item.content}` }}></p>;
-                  case "li":
-                    return <li key={index} dangerouslySetInnerHTML={{ __html: item.content }}></li>;
-                  case "p":
-                  default:
-                    return <p key={index} dangerouslySetInnerHTML={{ __html: item.content }}></p>;
-                }
-              })
-            : parseResponse(response).map((item, index) => {
-                switch (item?.type) {
-                  case "h3":
-                    return <h3 key={index} dangerouslySetInnerHTML={{ __html: item.content }}></h3>;
-                  case "ol":
-                    return <p key={index} dangerouslySetInnerHTML={{ __html: `${index + 1}. ${item.content}` }}></p>;
-                  case "li":
-                    return <li key={index} dangerouslySetInnerHTML={{ __html: item.content }}></li>;
-                  case "p":
-                  default:
-                    return <p key={index} dangerouslySetInnerHTML={{ __html: item.content }}></p>;
-                }
-              })}
+          {(isTyping ? displayedText : response).split("\n").map((line, index) => (
+            <p key={index}>{line}</p>
+          ))}
         </div>
         {loading && (
           <div className="h-10 w-full flex">
             <div className="w-full h-full">
-              <div
-                className="h-1/2 bg-gray-500 rounded-xl mb-2 shimmers"
-                style={{ animation: "shimmer 2s infinite" }}
-              ></div>
-              <div
-                className="h-1/2 bg-gray-500 rounded-xl shimmers"
-                style={{ animation: "shimmer2 2s infinite", animationDelay: "0.2s" }}
-              ></div>
+              <div className="h-1/2 bg-gray-300 rounded-xl mb-2 shimmer"></div>
+              <div className="h-1/2 bg-gray-300 rounded-xl shimmer"></div>
             </div>
           </div>
         )}
       </div>
+
+      <style jsx>{`
+        .scrollbar-hidden::-webkit-scrollbar {
+          display: none;
+        }
+        .shimmer {
+          animation: shimmer 2s infinite;
+        }
+        @keyframes shimmer {
+          0% {
+            width: 0%;
+            opacity: 0;
+          }
+          50% {
+            width: 70%;
+            opacity: 1;
+          }
+          100% {
+            width: 0%;
+            opacity: 0;
+          }
+        }
+      `}</style>
     </div>
   );
 }
