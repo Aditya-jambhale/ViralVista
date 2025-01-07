@@ -1,135 +1,68 @@
-# SuperLevel Mind Hack
+# ViralVista - Social Media Analysis Dashboard
 
-SuperLevel Mind Hack is a cutting-edge website designed to challenge and enhance your mental capabilities through engaging and innovative activities. The project uses a **Next.js** framework for the frontend and a **Flask Python** framework for the backend, ensuring a seamless user experience and robust functionality.
+The **ViralVista** is an innovative web-based platform designed to provide actionable insights into social media performance. It empowers users to make data-driven decisions by analyzing metrics such as likes, comments, shares, and reach across various post types. Built with cutting-edge tools and technologies, this project simplifies social media analytics and drives engagement strategies.
 
-## Project Structure
+## 🚀 Features
 
-The project is divided into two main folders:
+- **Comprehensive Analytics Dashboard**:  
+   - Visualize key metrics (likes, comments, shares, reach) through interactive graphs and charts powered by **Chart.js**.  
+   - Analyze performance trends across platforms to identify areas of improvement.
 
-1. **Frontend**
-   - Folder Name: `next-app`
-   - Framework: [Next.js](https://nextjs.org/)
-   - Description: The frontend is responsible for delivering a responsive and dynamic user interface, ensuring a high-quality user experience.
+- **Post-Type Insights**:  
+   - Compare the effectiveness of post types like carousels, static images, and reels.  
+   - Gain clarity on what drives the most engagement.
 
-2. **Backend**
-   - Folder Name: `python`
-   - Framework: [Flask](https://flask.palletsprojects.com/)
-   - Description: The backend handles API endpoints, data processing, and communication with any external services or databases.
+- **Data Query with AI**:  
+   - Powered by **Langflow**, enabling natural language queries for custom insights.  
+   - Example Queries:  
+      - *"Which post has the highest likes?"*  
+      - *"What is the best time to post?"*  
+      - *"Compare comments across post types."*
 
----
+- **Real-Time Data Integration**:  
+   - Seamlessly fetch and analyze data from **AstraDB** to ensure accurate and up-to-date insights.
 
-## Features
+- **Responsive and User-Friendly**:  
+   - Designed with **Next.js** and styled using **Tailwind CSS** for a smooth, responsive experience across devices.  
+   - Intuitive UI for easy navigation and interaction.
 
-- **Dynamic Frontend**: Built with Next.js for server-side rendering and improved performance.
-- **Robust Backend**: Powered by Flask Python for secure and efficient data handling.
-- **Real-Time Interactions**: Smooth communication between frontend and backend for real-time updates.
-- **Deployed on Vercel**: Ensuring reliable and fast hosting.
+## 📊 Insights Offered
 
----
+- Top-performing posts and their metrics.
+- Engagement trends across platforms and post types.
+- Best times to post for maximum audience reach.
+- Comparative analysis of user engagement metrics.
 
-## Installation and Setup
+## 🛠️ Tech Stack
 
-Follow these steps to set up the project locally:
+- **Framework**: [Next.js](https://nextjs.org/) – Robust and scalable frontend framework.
+- **Database**: [AstraDB](https://www.datastax.com/products/databases/astra) – High-performance distributed NoSQL database.
+- **AI Integration**: [Langflow](https://github.com/logspace-ai/langflow) – Powerful language processing for custom data queries.
+- **Data Visualization**: [Chart.js](https://www.chartjs.org/) – Flexible and easy-to-use charting library for interactive data visualizations.
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) – Modern utility-first CSS framework.
 
-### Prerequisites
+## 💡 Purpose
 
-Ensure you have the following installed:
-- Node.js
-- Python (3.8 or higher)
-- npm (Node Package Manager)
+This project was built as part of a hackathon challenge to solve real-world problems in social media analytics. Our goal was to design a platform that simplifies complex data analysis, enabling users to understand engagement patterns, identify trends, and make informed decisions to enhance their social media strategies.
 
-### Frontend (Next.js)
+## 🌐 Hosted Application
 
-1. Navigate to the `next-app` folder:
-   ```bash
-   cd next-app
-   ```
+The application is live and accessible at:  
+[ViralVista](http://35.212.169.166/)
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+## 🎯 Future Enhancements
 
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
+- Integration with multiple social media platforms for cross-platform analytics.
+- Advanced sentiment analysis of comments and captions.
+- Predictive insights using machine learning models.
+- Support for exporting analytics reports.
 
-4. Open the application in your browser at `http://localhost:3000`.
 
-### Backend (Flask)
+## 📨 Contact
 
-1. Navigate to the `python` folder:
-   ```bash
-   cd python
-   ```
-
-2. Create a virtual environment:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate   # For Windows: venv\Scripts\activate
-   ```
-
-3. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. Start the Flask server:
-   ```bash
-   flask run
-   ```
-
-5. The backend will run at `http://127.0.0.1:5000`.
+For queries, feedback, or collaborations, reach out at:  
+**[jambhaleaditya63@gmail.com](mailto:jambhaleaditya63@gmail.com)**
 
 ---
 
-## Deployment
-
-- The frontend is deployed using [Vercel](https://vercel.com/).
-- Backend deployment depends on your preferred hosting platform (e.g., AWS, Heroku, etc.).
-
----
-
-## Contributing
-
-Contributions are welcome! Follow these steps to contribute:
-
-1. Fork the repository.
-2. Create a new branch for your feature or bug fix:
-   ```bash
-   git checkout -b feature-name
-   ```
-3. Commit your changes:
-   ```bash
-   git commit -m "Description of changes"
-   ```
-4. Push to your branch:
-   ```bash
-   git push origin feature-name
-   ```
-5. Submit a pull request.
-
----
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
-
-## Acknowledgments
-
-- [Next.js Documentation](https://nextjs.org/docs)
-- [Flask Documentation](https://flask.palletsprojects.com/)
-- [Vercel](https://vercel.com/) for hosting the frontend
-
----
-
-## Contact
-
-For any inquiries or feedback, please contact:
-
-- **Email**: [your-email@example.com](mailto:your-email@example.com)
-- **Website**: [SuperLevel Mind Hack](https://superlevel-mind-hack.vercel.app/)
-
+Explore the **ViralVista** and take your social media game to the next level! 🎉
