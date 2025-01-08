@@ -35,7 +35,7 @@ The **ViralVista** is an innovative web-based platform designed to provide actio
 
 ## 🛠️ Tech Stack
 
-- **Framework**: [Next.js](https://nextjs.org/) – Robust and scalable frontend framework.
+- **Framework**: [Next.js](https://nextjs.org/) – Robust and scalable fullstack framework.
 - **Database**: [AstraDB](https://www.datastax.com/products/databases/astra) – High-performance distributed NoSQL database.
 - **AI Integration**: [Langflow](https://github.com/logspace-ai/langflow) – Powerful language processing for custom data queries.
 - **Data Visualization**: [Chart.js](https://www.chartjs.org/) – Flexible and easy-to-use charting library for interactive data visualizations.
@@ -48,7 +48,7 @@ This project was built as part of a hackathon challenge to solve real-world prob
 ## 🌐 Hosted Application
 
 The application is live and accessible at:  
-[ViralVista](http://35.212.169.166/)
+[http://35.212.169.166/)](http://35.212.169.166/)
 
 ## 🎯 Future Enhancements
 
